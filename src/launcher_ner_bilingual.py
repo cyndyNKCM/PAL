@@ -43,7 +43,7 @@ def parse_args():
     # load the train data: source languages
     parts = args.train.split(";")
     if len(parts) % 5 != 0:
-        print "Wrong inputs of training"
+        print ("Wrong inputs of training")
         raise SystemExit
     global TRAIN_LANG_NUM
     TRAIN_LANG_NUM = len(parts) / 5
@@ -58,7 +58,7 @@ def parse_args():
     # load the test data: target languages
     parts = args.test.split(";")
     if len(parts) % 5 != 0:
-        print "Wrong inputs of testing"
+        print ("Wrong inputs of testing")
         raise SystemExit
     global TEST_LANG_NUM
     TEST_LANG_NUM = len(parts) / 5
@@ -99,7 +99,7 @@ def initialise_game(train_file, test_file, dev_file, emb_file, budget):
 
     # prepare story
     story = [train_x, train_y, train_idx]
-    print "The length of the story ", len(train_x), " ( DEV = ", len(dev_x), " TEST = ", len(test_x), " )"
+    print ("The length of the story ", len(train_x), " ( DEV = ", len(dev_x), " TEST = ", len(test_x), " )")
     test = [test_x, test_y, test_idx]
     dev = [dev_x, dev_y, dev_idx]
     # load game
@@ -203,13 +203,13 @@ def play_ner():
             print '>>>>>>> Current game round ', episode, 'Maximum ', MAX_EPISODE
             observation = game.get_frame(model)
             action = robot.get_action(observation)
-            print '> Action', action
+            print ('> Action', action)
             reward, observation2, terminal = game.feedback(action, model)
-            print '> Reward', reward
+            print ('> Reward', reward)
             robot.update(observation, action, reward, observation2, terminal)
             if terminal == True:
                 episode += 1
-                print '> Terminal <'
+                print ('> Terminal <')
     return robot
 
 
